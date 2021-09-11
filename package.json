@@ -1,0 +1,23 @@
+{
+  "name": "tiralabrav2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Le0nerdo/tiralabrav2.git"
+  },
+  "author": "Le0nerdo (Leo Becker)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Le0nerdo/tiralabrav2/issues"
+  },
+  "homepage": "https://github.com/Le0nerdo/tiralabrav2#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "jest": "^27.1.1"
+  }
+}
