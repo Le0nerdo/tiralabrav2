@@ -1,5 +1,5 @@
 # Week 1 Report
-I used 12->? hours this week.
+I used 6 hours this week. (not including information gathering)
 
 ## What have you done this week related to the project?
 * Figured out what problem would be nice for learning about MinMax and alpha-beta pruning.
