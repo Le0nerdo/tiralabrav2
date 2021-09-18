@@ -1,10 +1,13 @@
 {
   "name": "tiralabrav2",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "localhost": "http-server ./src -a localhost",
+    "testw": "jest --watch",
+    "coverage" : "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -16,8 +19,14 @@
     "url": "https://github.com/Le0nerdo/tiralabrav2/issues"
   },
   "homepage": "https://github.com/Le0nerdo/tiralabrav2#readme",
+  "dependencies": {
+    "http-server": "^13.0.2"
+  },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.4.2",
     "jest": "^27.1.1"
-  }
+  },
+  "jest": {}
 }

@@ -3,7 +3,7 @@ module.exports = {
 		'browser': true,
 		'es2021': true,
 	},
-	'extends': 'eslint:recommended',
+	'extends': ['plugin:jest/recommended', 'eslint:recommended'],
 	'parserOptions': {
 		'ecmaVersion': 12,
 		'sourceType': 'module'
@@ -25,5 +25,6 @@ module.exports = {
 			'error',
 			'never'
 		]
-	}
+	},
+	'plugins': ['jest']
 }

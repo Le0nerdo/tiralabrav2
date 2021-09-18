@@ -1,5 +1,6 @@
 import { GameState } from '../GameState'
 
+/** Work in progress do not use */
 class NegamaxSolver {
 	negmax (state) {
 		if (state.nbMoves() == state.WIDTH * state.HEIGHT) return 0
