@@ -241,3 +241,17 @@ test('isFull returns false on not full board', () => {
 	expect(state.isFull()).toBe(false)
 })
 
+test('game state is created correctly out of string', () => {
+	const state = new GameState('67152117737262713366376314254')
+	expect(state.moves).toBe(29)
+	expect(state.height).toStrictEqual([5, 4, 5, 2, 2, 5, 6])
+	expect(state.board).toStrictEqual([
+		[1, 2, 1, 2, 1, 0],
+		[1, 2, 2, 1, 0, 0],
+		[2, 1, 2, 1, 2, 0],
+		[2, 1, 0, 0, 0, 0],
+		[2, 2, 0, 0, 0, 0],
+		[1, 1, 1, 2, 1, 0],
+		[2, 2, 1, 1, 1, 2],
+	])
+})

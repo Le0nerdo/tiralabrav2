@@ -40,6 +40,13 @@ class GameState {
 				this.height.push(height)
 			}
 			this.moves = this.height.reduce((s, v) => s + v)
+		} else  if (Object.prototype.toString.call(state) === '[object String]') {
+			this.board = Array(this.WIDTH).fill().map(() => Array(this.HEIGHT).fill(0))
+			this.height = Array(this.WIDTH).fill(0)
+			this.moves = 0
+			for (let i = 0; i < state.length; i++) {
+				this.play(parseInt(state[i]) - 1)
+			}
 		} else {
 			const b = JSON.stringify(state.board)
 			this.board = JSON.parse(b)
