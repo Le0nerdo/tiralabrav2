@@ -28,10 +28,12 @@ class GameBoard {
 		while (this.element.firstChild) {
 			this.element.removeChild(this.element.firstChild)
 		}
+
+		const board = state.toArray()
 		for (let y = state.HEIGHT - 1; y >= 0; y--) {
 			for (let x = 0; x < state.WIDTH; x++) {
 				const field = document.createElement('div')
-				field.classList.add(FIELD_MAP[state.board[x][y]])
+				field.classList.add(FIELD_MAP[board[x][y]])
 				this.element.appendChild(field)
 			}
 		}

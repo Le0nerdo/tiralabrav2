@@ -10,6 +10,7 @@ import { NegamaxAI } from './AIs/NegamaxAI.js'
 const sleep = () => {
 	return new Promise(resolve => setTimeout(resolve, 500))
 }
+
 async function gameloop() {
 	const state = new GameState([
 		[1, 1, 2, 1, 0, 0],
