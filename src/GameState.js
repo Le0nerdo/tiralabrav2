@@ -60,6 +60,10 @@ class GameState {
 		 * @type number
 		 */
 		this.fullMask = BigInt('0b' + ('0' + ('1').repeat(this.HEIGHT)).repeat(this.WIDTH))
+		/**
+		 * A bitboard of the game that has 1 in the bottom row. Used for generating key.
+		 */
+		this.bottom = BigInt('0b' + (('0').repeat(this.HEIGHT) + '1').repeat(this.WIDTH))
 
 		if (state === undefined) {
 			this.position = BigInt(0)
@@ -326,6 +330,15 @@ class GameState {
 			}
 		}
 		return board
+	}
+
+	/**
+	 * Generates a key corresponding to the game state.
+	 * 
+	 * @returns BigInt
+	 */
+	generateKey() {
+		return this.position + this.mask + this.bottom
 	}
 }
 

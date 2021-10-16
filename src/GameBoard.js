@@ -25,9 +25,7 @@ class GameBoard {
 	 * @param {Object} state The game state to be drawn.
 	 */
 	draw(state) {
-		while (this.element.firstChild) {
-			this.element.removeChild(this.element.firstChild)
-		}
+		this.element.innerHTML = ''
 
 		const board = state.toArray()
 		for (let y = state.HEIGHT - 1; y >= 0; y--) {

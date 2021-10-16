@@ -39,26 +39,43 @@ class NegamaxAI {
 			}
 		}
 
-		let beta = ~~((state.WIDTH * state.HEIGHT + 1 - state.nbMoves()) / 2) - 1
-		let alpha = -state.WIDTH * state.HEIGHT
-		let bestMove = 0
+		let bestScore = -state.WIDTH * state.HEIGHT
+		let bestMove = -1
 		for (let a = 0;  state.WIDTH > a; a++) {
 			const i = this.order[a]
 			if (state.canPlay(i)) {
 				const GS2 = new GameState(state)
 				GS2.play(i)
-				const score = -this.negamax(GS2, -beta, -alpha)
-				if (score >= beta) {
-					return i
-				}
-				if (score > alpha) {
-					alpha = score
+				const score = -this.solve(GS2)
+				if (bestScore < score) {
+					bestScore = score
 					bestMove = i
 				}
-
 			}
 		}
 		return bestMove
+	}
+
+	solve(state) {
+		let min = - (~~(state.WIDTH * state.HEIGHT - state.nbMoves())) /  2
+		let max = (~~(state.WIDTH * state.HEIGHT + 1 - state.nbMoves())) / 2
+
+		while (min < max) {
+			let med = min + (max - min) / 2
+			if (med <= 0 && (min / 2) < med) {
+				med = min/2
+			} else if (med >= 0 && (max / 2) > med) {
+				med = max/2
+			}
+			const r = this.negamax(state, med, med+1)
+			if (r <= med) {
+				max = r
+			} else {
+				min = r
+			}
+
+			return min
+		}
 	}
 
 	/**
