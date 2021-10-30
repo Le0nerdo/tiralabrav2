@@ -47,7 +47,7 @@ class NegamaxAI {
 			if (state.canPlay(i)) {
 				const GS2 = new GameState(state)
 				GS2.play(i)
-				const score = -this.negamax(GS2, -beta, -alpha)
+				const score = -this.solve(GS2, -beta, -alpha)
 				if (score >= beta) {
 					return i
 				}
@@ -62,6 +62,55 @@ class NegamaxAI {
 	}
 
 	/**
+	 * Iteratively pinpoints the value of a given state.
+	 * 
+	 * @param {Object} state The game state to be evaluated.
+	 * @param {Number} alpha If the value is smaller than this, we are not interested
+	 * in it.
+	 * @param {Number} beta The biggest possible score. (Or we are not interested in
+	 * bigger scores.)
+	 * @returns The value of the game state.
+	 */
+	solve(state, alpha, beta) {
+		let min = - (~~(state.WIDTH * state.HEIGHT - state.nbMoves() /  2))
+		let max = (~~(state.WIDTH * state.HEIGHT + 1 - state.nbMoves() / 2))
+
+		if (alpha) {
+			min = alpha
+		}
+		if (beta) {
+			max = beta
+		}
+
+		while (min < max) {
+			let med = min + ~~((max - min) / 2)
+			/**
+			 * Select a medium of negative values or positive values (if there
+			 * is a choise)
+			 */
+			if (med <= 0 && ~~(min / 2) < med) {
+				med = ~~(min / 2)
+			} else if (med >= 0 && ~~(max / 2) > med) {
+				med = ~~(max / 2)
+			}
+
+			/**
+			 * Check if the score is smaller or bigger than med, and update
+			 * values accordingly. (if a value >= to med + 1 is found it will be
+			 * instantly returned.)
+			 */
+			const r = this.negamax(state, med, med + 1)
+			if (r <= med) {
+				max = r
+			} else {
+				min = r
+			}
+		}
+
+		return min
+	}
+
+	/**
 	 * Calculates the value of a game state.
 	 * 
 	 * 0 means that the game state leads to a draw if both players play in an
@@ -73,10 +122,10 @@ class NegamaxAI {
 	 * -x means that the other player wins in x:th last piece, if both players
 	 * play in an optimal way.
 	 * 
-	 * @param {*} state The game state to be evaluated.
-	 * @param {*} alpha If the value is smaller than this, we are not interested
+	 * @param {Object} state The game state to be evaluated.
+	 * @param {Number} alpha If the value is smaller than this, we are not interested
 	 * in it.
-	 * @param {*} beta The biggest possible score. (Or we are not interested in
+	 * @param {Number} beta The biggest possible score. (Or we are not interested in
 	 * bigger scores.)
 	 * @returns The value of the game state.
 	 */
@@ -84,21 +133,23 @@ class NegamaxAI {
 		if (state.nbMoves() === state.WIDTH * state.HEIGHT) return 0
 
 		const key = state.generateKey()
-		const stored = this.transitionTable.get(key)
-		if (stored) return stored
 
 		let a = alpha
 		let b = beta
 		let bestPossibleScore = ~~((state.WIDTH * state.HEIGHT + 1 - state.nbMoves()) / 2)
-	
+
 		for (let i = 0; i < state.WIDTH; i++) {
 			if (state.canPlay(i) && state.isWinningMove(i)) {
 				return bestPossibleScore
 			}
 		}
 
-		if (b > bestPossibleScore - 1) {
-			b = bestPossibleScore - 1
+		bestPossibleScore -= 1
+		const stored = this.transitionTable.get(key)
+		if (stored) bestPossibleScore = stored
+
+		if (b > bestPossibleScore) {
+			b = bestPossibleScore
 			if (a >= b) {
 				return b
 			}

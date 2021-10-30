@@ -4,10 +4,11 @@
   "description": "",
   "main": "src/index.html",
   "scripts": {
-    "test": "jest",
+    "test": "jest --testPathIgnorePatterns=Stress",
     "localhost": "http-server ./src -a localhost",
-    "testw": "jest --watch",
-    "coverage" : "jest --coverage"
+    "testw": "jest --testPathIgnorePatterns=Stress --watch",
+    "stress": "jest -t=Stress",
+    "coverage" : "jest --testPathIgnorePatterns=Stress --coverage"
   },
   "repository": {
     "type": "git",

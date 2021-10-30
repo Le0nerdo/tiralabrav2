@@ -15,7 +15,7 @@ I chose this project in order to get familiar with this type of algorithms, befo
 The user is able to select different versions of the AI that play against each other. Maybe I will also add that the user can play. The user gets a visual output in the form of a game board with disks that come in two different colours.
 
 ## Time Complexity
-I will try to make the AI calculate as many moves in advance as possible in under 1 second. I chose 1 second, because after that the user is most likely already bored.
+I will try to make the AI calculate as many moves in advance as possible in under 1 second. I chose 1 second, because after that the user is most likely already bored. (Yes I failed this.)
 
 ## Sources
 I am using Pascal Pons [Blog](http://blog.gamesolver.org/) as a guide.

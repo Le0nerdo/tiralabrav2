@@ -24,7 +24,7 @@ test('close to end negmax value test', () => {
 		[2, 2, 1, 2, 0, 0],
 	])
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(-1)
+	expect(ai.solve(state, -50, 50)).toBe(-1)
 })
 
 test('close to end negmax value test2', () => {
@@ -38,46 +38,52 @@ test('close to end negmax value test2', () => {
 		[2, 0, 0, 0, 0, 0],
 	])
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(1)
+	expect(ai.solve(state, -50, 50)).toBe(1)
 })
 
 test('close to end negmax value test3', () => {
 	const state = new GameState('67152117737262713366376314254')
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(6)
+	expect(ai.solve(state, -50, 50)).toBe(6)
 })
 
 test('close to end negmax value test4', () => {
 	const state = new GameState('6216633712715125334265163163777225')
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(-3)
+	expect(ai.solve(state, -50, 50)).toBe(-3)
 })
 
 test('close to end negmax value test5', () => {
 	const state = new GameState('47715713331437527153255735112')
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(0)
+	expect(ai.solve(state, -50, 50)).toBe(0)
 })
 
 test('midgame negmax value test 1', () => {
 	const state = new GameState('31124166611476652461')
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(-7)
+	expect(ai.solve(state, -50, 50)).toBe(-7)
 })
 
 test('midgame negmax value test 2', () => {
 	const state = new GameState('76543123446324223431432127')
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(-2)
+	expect(ai.solve(state, -50, 50)).toBe(-2)
 })
 
 test('midgame negmax value test 3', () => {
 	const state = new GameState('36466712613373735727361')
 	const ai = new NegamaxAI(state)
-	expect(ai.negamax(state, -50, 50)).toBe(3)
+	expect(ai.solve(state, -50, 50)).toBe(3)
 })
 
 test('midgame negmax value test 4', () => {
+	const state = new GameState('5746741223753516274755')
+	const ai = new NegamaxAI(state)
+	expect(ai.solve(state, -50, 50)).toBe(8)
+})
+
+test('midgame negmax value test 4 XD', () => {
 	const state = new GameState('5746741223753516274755')
 	const ai = new NegamaxAI(state)
 	expect(ai.negamax(state, -50, 50)).toBe(8)

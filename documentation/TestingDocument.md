@@ -15,7 +15,9 @@ Reasons for not testing the rest.
 * The app.js is just some temporary spaghetti. (There will most likely, be a class that takes most of the current work, from it.)
 
 ## Performance
-Since NegamaxAI is still taking a very long time to calculate moves, there are no tests for speeds.
+My performance testing consists of using game states from http://blog.gamesolver.org/solving-connect-four/02-test-protocol/ and trying to solve their values. I selected "randomly" 10 states from Begin-Easy (Test_L1_R1) and 10 from Begin-Medium (Test_L1_R2).
+
+I run the tests on node.js using 16% of i7-4790K that is running 4.5 GHz. The Begin-Easy test took about 107 seconds. In the Begin-Medium part the first state took 30 seconds and I cancelled at the second one after 10 hours.
 
 ## Graphical User Interface
 Before pushing to GitHub, there is a manual test taking place. This is done by, hosting the website locally (check README) and opening the console, and checking that there are not too many red boxes. A 	hard-working tester may also check if he finds something that could be interpreted as a 7x6 grid.

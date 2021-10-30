@@ -14,6 +14,8 @@ npm install
 ```cmd
 npm run localhost
 # The website should be available under http://localhost:8080/
+# When you refresh a starting state is picked by random.
+# Some states take a long time.
 ```
 
 ## Testign
@@ -35,7 +37,8 @@ npm run coverage # to get test coverage
 |File|% Stmts|% Branch|% Funcs| % Lines|Uncovered Lines #s|
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |GameState.js|100|100|100|100||
-|NegamaxAI.js|98.11|92.86|100|97.83|59
+|TranspositionTable.js|100|100|100|100||
+|NegamaxAI.js|98.7|93.33|100|98.55|61
 
 ## Weekly Reports
 |[Week 1](/documentation/Week1Report.md)|[Week 2](/documentation/Week2Report.md)|[Week 3](/documentation/Week3Report.md)|[Week 4](/documentation/Week4Report.md)|[Week 5](/documentation/Week5Report.md)|[Week 6](/documentation/Week6Report.md)|
